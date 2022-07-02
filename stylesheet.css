@@ -70,16 +70,17 @@ body
 {
     display:none;
     width:300px;
-    height:400px;
+    height:300px;
     border:1px solid black;
     margin:auto auto;
     padding:5px;
     color:white;
+    border-radius: 15px;
 }
 
 #printedLabel p
 {
-    margin:10px
+    margin:5px
 }
 .flex
 {
@@ -90,7 +91,7 @@ body
 
 #printedLabel div
 {
-    margin:30px auto;
+    margin:20px auto;
 }
 
 #expiredDay
@@ -110,18 +111,29 @@ body
     margin:auto auto;
     width:150px;
 }
-#userid
+
+
+#selectUsers
 {
     margin:5px auto;
     color:white;
     border: none;
-    text-align: center;
-    font-size:15px
-
-
+    font-size:15px;
+    display:inline-block
 }
 
 nav ul button:hover
 {
     background-color:black
+}
+
+#newUser
+{
+    display:none;
+    width:40px;
+}
+
+#userIdLabel
+{
+    margin:auto auto;
 }

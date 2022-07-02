@@ -1,4 +1,4 @@
-let products = [["Pulled Pork Defrosted",3],["Garlic Oil",7],["Defrost Pepperoni",3],["roasted pepper",5],["Starter Dough",2],["Goat Cheese",5],["Mozarella Fiora di Latte",3],["grated parmesan",5],["Chupped Chilli",3]]
+let products = [["Pulled Pork Defrosted",3],["Garlic Oil",7],["Defrost Pepperoni",3],["roasted pepper",5],["Starter Dough",2],["Goat Cheese",5],["Mozarella Fiora di Latte",3],["grated parmesan",5],["Chupped Chilli",3],["Pizza Sauce",5],["Coocked Sausages",3],]
 
 
 
@@ -18,7 +18,7 @@ function getProduct()
     let array = []
     for(let i=0;i<products.length;i++)
     {
-        let product = document.getElementById("searchFeld").value
+        let product = document.getElementById("searchFeld").value.toLowerCase()
         if (products[i][0].toLowerCase().includes(product)=== true)
         {
             array.push(products[i])
@@ -64,31 +64,32 @@ function getProduct()
                 document.getElementById("printedLabel").style.display = "block"
                 document.getElementById("expiredDay").innerHTML= expiredDay_text
 
-                let userid = document.getElementById("userid")
+                let userid = document.getElementById("selectUsers")
                 switch(next_date.getDay()) {
 
                     case 0:
-                        document.getElementById("printedLabel").style.background ="red"
-                        userid.style.background = "red"
+                        document.getElementById("printedLabel").style.background ="rgb(255, 30, 0)"
+                        userid.style.background = "rgb(255, 30, 0)"
                         break;
                       case 1:
-                        document.getElementById("printedLabel").style.background ="blue"
-                        userid.style.background = "blue"
+                        document.getElementById("printedLabel").style.background ="rgba(0, 153, 255, 0.863)"
+                        userid.style.background = "rgba(0, 153, 255, 0.863)"
                         break;
                       case 2:
-                        document.getElementById("printedLabel").style.background ="green"
-                        userid.style.background = "green"
+                        document.getElementById("printedLabel").style.background ="rgb(80, 121, 20)"
+                        userid.style.background = "rgb(80, 121, 20)"
                         break;
                       case 3:
-                        document.getElementById("printedLabel").style.background ="yellow"
-                        userid.style.background = "yellow"
+                        document.getElementById("printedLabel").style.background ="rgb(145, 145, 12)"
+                        userid.style.background = "rgb(145, 145, 12)"
                         break;
                       case 4:
                         document.getElementById("printedLabel").style.background ="orange"
                         userid.style.background = "orange"
                         break;
                       case 5:
-                        document.getElementById("printedLabel").style.background ="purple"
+                        document.getElementById("printedLabel").style.background ="blueviolet"
+                        userid.style.background = "blueviolet"
                         break;
                       case 6:
                         document.getElementById("printedLabel").style.background ="grey"
@@ -114,6 +115,38 @@ document.getElementById("delete").addEventListener("click",()=>{
     document.getElementById("container").innerHTML = ""
     document.getElementById("printedLabel").style.display="none"
 })
+
+
+var userSubmit=false
+function addUsers()
+{
+
+    if(userSubmit==false)
+    {
+        document.getElementById("newUser").style.display = "inline-block"
+        userSubmit=true
+        document.getElementById("add").innerHTML="Submit"
+    }
+   else
+    {
+
+            let select = document.getElementById("selectUsers")
+            let option= document.createElement("option")
+            if(document.getElementById("newUser").value!=="" && document.getElementById("newUser").value.length >1)
+            {
+                option.text=document.getElementById("newUser").value.toUpperCase().slice(0,1)+"."+ document.getElementById("newUser").value.toUpperCase().slice(1)
+                select.add(option)
+                document.getElementById("newUser").style.display ="none";
+                userSubmit=false
+                document.getElementById("newUser").value=""
+                document.getElementById("add").innerHTML="Add User"
+            }
+
+    }
+   
+}
+
+document.getElementById("add").addEventListener("click",addUsers)
 
 
 

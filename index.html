@@ -17,6 +17,10 @@
                 <button>Categories</button>
                 <button id="search">Search</button>
                 <button id ="delete">Delete </button>
+                <div>
+                    <input id="newUser" type="text" maxlength="2"><button id ="add">Add User</button>
+                </div>
+                
             </ul>
         </nav>
     </header>
@@ -26,6 +30,7 @@
     </div>
     <div id = "printedLabel">
         <p id="expiredDay"></p>
+        <hr>
         <p id="productName"></p>
         <p>Opened :</p>
         <div class = "flex">
@@ -39,8 +44,12 @@
             <p class ="timing"></p>
         </div >
         <div id="user">
-            <label >User: </label> 
-            <input id = "userid" type="text">
+            <label id = "userIdLabel">User: <select id="selectUsers">
+                <option>Select User </option>
+
+            </select></label> 
+            <!--<input id = "userid" type="text">-->
+
         </div>
        
 
