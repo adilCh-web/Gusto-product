@@ -4,6 +4,9 @@
     padding:0px;
     box-sizing: border-box;
 }
+
+
+
 header nav
 {
     width:100%
@@ -33,20 +36,30 @@ nav ul button
     margin:5px auto;
     background-color: rgb(143, 138, 138);
     color:white;
-    padding:2px
+    padding:2px;
+    opacity:0.9;
+
 }
 
 .productLabel
 {
-    height:80px;
-    width:80px;
+    height:100px;
+    width:100px;
     border:4px solid black;
     border-radius: 15px;
     display:flex;
     justify-content: center;
     align-items: center;
     text-align:center;
-    margin:5px 5px;
+    margin:8px 8px;
+    background-color: rgb(20, 20, 20);
+    color:white;
+    font-weight: bolder;
+}
+
+.productLabel:hover
+{
+    background-color: orangered;
 }
 
 #container
@@ -57,7 +70,7 @@ nav ul button
     width:90%;
     
     margin:20px auto;
-    background-image: url("gusto-main-logo-black-1525264331.png");
+
 
 }
 
@@ -131,9 +144,22 @@ nav ul button:hover
 {
     display:none;
     width:40px;
+    padding:10px;
 }
 
 #userIdLabel
 {
     margin:auto auto;
+}
+
+#print
+{
+    display:block;
+    margin:20px auto;
+    width:100px;
+    text-align:center;
+    background-color: orangered;
+    color:white;
+    padding:5px;
+    display:none
 }

@@ -1,13 +1,15 @@
-let products = [["Pulled Pork Defrosted",3],["Garlic Oil",7],["Defrost Pepperoni",3],["roasted pepper",5],["Starter Dough",2],["Goat Cheese",5],["Mozarella Fiora di Latte",3],["grated parmesan",5],["Chupped Chilli",3],["Pizza Sauce",5],["Coocked Sausages",3],]
+let products = [["Pulled Pork Defrost",3],["Garlic Oil",7],["Defrost Pepperoni",3],["roasted pepper",5],["Starter Dough",2],["Goat Cheese",5],["Mozarella Fiora di Latte",3],["grated parmesan",5],["Chupped Chilli",3],["Pizza Sauce",5],["Coocked Sausages",3],["Pineapple",3],["Sweetcorn",3],["Coocked Chicken",3],["Chpped Parsley",3]]
 
 
 
 
-
+var color
 
 document.getElementById("search").addEventListener("click",()=>
 {
+
     document.getElementById("searchFeld").style.display="block"
+
 })
 
 
@@ -32,6 +34,9 @@ function getProduct()
             label.innerHTML = array[i][0]
             label.onclick = function()
             {
+
+                document.getElementById("print").style.display="block"
+            
                 let today = new Date()
                 let day = today.getDate()
                 var timing= today.toTimeString().slice(0,5)
@@ -65,35 +70,43 @@ function getProduct()
                 document.getElementById("expiredDay").innerHTML= expiredDay_text
 
                 let userid = document.getElementById("selectUsers")
+                let label = document.getElementById("printedLabel")
                 switch(next_date.getDay()) {
 
                     case 0:
-                        document.getElementById("printedLabel").style.background ="rgb(255, 30, 0)"
-                        userid.style.background = "rgb(255, 30, 0)"
+                        color = "rgb(255, 30, 0)"
+                        label.style.backgroundColor = color
+                        userid.style.background = color
                         break;
                       case 1:
-                        document.getElementById("printedLabel").style.background ="rgba(0, 153, 255, 0.863)"
-                        userid.style.background = "rgba(0, 153, 255, 0.863)"
+                        color="rgb(0, 153, 255)"
+                        label.style.backgroundColor =color
+                        userid.style.background = color
                         break;
                       case 2:
-                        document.getElementById("printedLabel").style.background ="rgb(80, 121, 20)"
-                        userid.style.background = "rgb(80, 121, 20)"
+                          color="rgb(80, 121, 20)"
+                        label.style.backgroundColor = color
+                        userid.style.background = color
                         break;
                       case 3:
-                        document.getElementById("printedLabel").style.background ="rgb(145, 145, 12)"
-                        userid.style.background = "rgb(145, 145, 12)"
+                          color="rgb(145, 145, 12)"
+                        label.style.backgroundColor =color
+                        userid.style.background = color
                         break;
                       case 4:
-                        document.getElementById("printedLabel").style.background ="orange"
-                        userid.style.background = "orange"
+                          color="orange"
+                        label.style.backgroundColor = color
+                        userid.style.background = color
                         break;
                       case 5:
-                        document.getElementById("printedLabel").style.background ="blueviolet"
-                        userid.style.background = "blueviolet"
+                          color="blueviolet"
+                        label.style.backgroundColor = color
+                        userid.style.background = color
                         break;
                       case 6:
-                        document.getElementById("printedLabel").style.background ="grey"
-                        userid.style.background = "grey"
+                        color="grey"
+                        label.style.backgroundColor =color
+                        userid.style.background = color
                     }
                 document.getElementById("productName").innerHTML = array[i][0]
                 document.getElementById("todaysDate").innerHTML = date_
@@ -107,13 +120,16 @@ function getProduct()
             container.appendChild(label)
             
         }
-    
+        document.getElementById("searchFeld").value=""
+
 }
+
 
 document.getElementById("delete").addEventListener("click",()=>{
     document.getElementById("searchFeld").value = ""
     document.getElementById("container").innerHTML = ""
     document.getElementById("printedLabel").style.display="none"
+    document.getElementById("print").style.display="none"
 })
 
 
@@ -151,4 +167,24 @@ document.getElementById("add").addEventListener("click",addUsers)
 
 
 
+function popup() {
+    let data=document.getElementById("printedLabel").innerHTML;
+    var mywindow = window.open('', '', 'height=300,width=300');
+    mywindow.document.write('<html><head><title></title>');
+    mywindow.document.write('<style>#userIdLabel{margin:auto auto;}#printedLabel{width:300px;height:300px;border:1px solid black;margin:auto auto;padding:5px;color:white;border-radius:15px;}#printedLabel p{margin:5px}.flex{display:flex;flex-direction: row;justify-content: space-around;}#printedLabel div{ margin:20px auto;}#expiredDay{font-size:30px;font-weight: bold;margin:5px auto;}#productName, #expiredDay{text-align:center;}#user{margin:auto auto;width:150px;}#selectUsers{margin:5px auto;color:white;border: none;font-size:15px;display:inline-block} </style>');
+    mywindow.document.write('</head><body>');
+    mywindow.document.write(data);
+    mywindow.document.write('</body></html>');
 
+    
+   
+    mywindow.print(); 
+    mywindow.close(); 
+    
+
+    return true;
+}
+
+
+
+document.getElementById("print").addEventListener("click",popup)
